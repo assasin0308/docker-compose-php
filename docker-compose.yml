@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  php-cli:
+    image: assasin0308/docker-compose-php:php-cli
+    build:
+      context: ./php-cli
+    volumes:
+      - ~/.ssh/:/root/.ssh
+      - ./conf/php/php.ini:/usr/local/etc/php/php.ini
+      - ./code/:/var/www/code
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    environment:
+      - TZ=Asia/Shanghai
